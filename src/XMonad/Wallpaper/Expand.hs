@@ -1,4 +1,4 @@
-module XMonad.Wallpaper.Expand where
+module XMonad.Wallpaper.Expand (expand) where
 
 import Control.Monad.State
 import Data.List
@@ -26,15 +26,21 @@ parse ('$':as) =
     let (a, b) = variable as in a : parse b
 parse as = 
     let (a, b) = literal as in a : parse b
-    
-t0 = do
-    let ast = parse "$HOME/Pictures/Wallpapers"
-    values <- mapM interpolate ast
-    putStrLn $ show values
 
 interpolate (Variable var) = maybe "" id <$> getEnv var
 interpolate (Literal str) = return str
 
+expand :: String -> IO String
+{- |
+Expand string using environment variables.
+The following syntax are supported
+
+> epxand $HOME/Pictures
+\/home\/user/Pictures
+
+> expand ${HOME}ABC
+\/home\/userABC
+-}
 expand str = do
     let ast = parse str
     concat <$> mapM interpolate ast

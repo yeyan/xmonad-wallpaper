@@ -1,4 +1,4 @@
-module XMonad.Wallpaper.Find where
+module XMonad.Wallpaper.Find (findImages) where
 
 import System.Posix.Directory
 import System.Posix.Files
@@ -73,6 +73,9 @@ runMimetypeDetection action = do
 isImage (RegularFile filepath) = isPrefixOf "image" <$> mimetype filepath
 isImage _ = return False
 
+{- |
+Recursively search supplied paths. Files are filtered by mimetypes, which is determined by magic bits. Duplicated paths will be removed.
+-}
 findImages filepaths = do
     paths  <- catMaybes <$> mapM toUnixFile filepaths
     files  <- concat <$> mapM findDirRecursive paths
