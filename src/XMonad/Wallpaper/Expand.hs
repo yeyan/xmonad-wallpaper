@@ -32,14 +32,14 @@ interpolate (Literal str) = return str
 
 expand :: String -> IO String
 {- |
-Expand string using environment variables.
-The following syntax are supported
+Expand string using environment variables, shell syntax are supported.
+Examples:
 
-> epxand $HOME/Pictures
-\/home\/user/Pictures
+>>> epxand "$HOME/Pictures"
+"/home/user/Pictures"
 
-> expand ${HOME}ABC
-\/home\/userABC
+>>> expand "${HOME}ABC"
+"/home/userABC"
 -}
 expand str = do
     let ast = parse str

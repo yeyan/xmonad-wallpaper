@@ -10,7 +10,7 @@ name:                xmonad-wallpaper
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
-version:             0.0.1.0
+version:             0.0.1.2
 
 -- A short (one-line) description of the package.
 synopsis:            
@@ -42,7 +42,7 @@ build-type:          Simple
 
 -- Extra files to be distributed with the package, such as examples or a 
 -- README.
--- extra-source-files:  
+extra-source-files:  README.md, changelog.md
 
 -- Constraint on the version of Cabal needed to build this package.
 cabal-version:       >=1.10

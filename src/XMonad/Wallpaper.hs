@@ -20,14 +20,9 @@ Example usage: (~/.xmonad/xmonad.hs)
 >        , modMask     = mod4Mask
 >        }
 
-Paths will be expanded using environment variables. 
-The following syntax are supported:
+paths will be expanded using environment variables, and paths are not exist will be ignored during scan phase.
 
-> epxand $HOME/Pictures
-\/home\/user/Pictures
-
-> expand ${HOME}ABC
-\/home\/userABC
+For more information about path expansion, see also 'expand'.
 
 -}
 
